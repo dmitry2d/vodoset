@@ -1,3 +1,4 @@
-# Vodoset Application 2.0
 
-Code / Blog
+# Vodoset 2.0
+
+Application Code / Blog
