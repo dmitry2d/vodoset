@@ -1,0 +1,19 @@
+{
+  "name": "vodoset",
+  "version": "2.0.0",
+  "description": "Vodoset 2.0 Application Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dmitry2d: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@github.com/dmitry2d/vodoset.git"
+  },
+  "author": "volcharo@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmitry2d/vodoset/issues"
+  },
+  "homepage": "https://github.com/dmitry2d/vodoset#readme"
+}
