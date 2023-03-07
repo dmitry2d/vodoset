@@ -3,11 +3,9 @@
 
 Application Design was created in Figma.
 
-You can find a source here:
-
-> [UI Components][ui_components_link]
-
-> [UI Screens][ui_screens_link]
+You can find source files here:
+- [UI Components (Figma File)][ui_components_link]
+- [UI Screens (Figma File)][ui_screens_link]
 
 
 [ui_components_link]: https://www.figma.com/file/fEVQId3qezmgaxjNChDVSM/Vodoset-2.0?node-id=0%3A1
