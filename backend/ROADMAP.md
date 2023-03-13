@@ -15,8 +15,14 @@ Vodoset 2.0 Application
     - pg
     - nodemon
     - dotenv
+    - sequelize
 
-- [x] Code express server
+- [x] Set up express server
 
+- [ ] Authorization
+    * Middleware to get User and Role
+    - [ ] Create Tables User and Role
+    - [ ] Create User and Role models
+    - [ ] Create Admin user and Role 
 
 
