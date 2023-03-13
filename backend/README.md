@@ -3,6 +3,7 @@
 
 ## Stack
 
-* NodeJS
-* PostgreSQL
+* NodeJS 16.19
+* PostgreSQL 15.1
 * Express
+
