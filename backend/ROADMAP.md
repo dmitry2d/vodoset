@@ -4,7 +4,7 @@
 Vodoset 2.0 Application
 Version 2.0.1
 
-## [ ] User, User Roles and Authorization Stage
+## [ ] User Authorization Stage
 
 - [ ] Draw Backend Scheme
     - [x] Overall scheme
@@ -23,12 +23,18 @@ Version 2.0.1
 
 - [x] Set up "Express.js" Server
 
+- [x] Error Handling Middleware
+
 - [x] Set up Sequelize Connection
 
-- [ ] Develop User and Role Endpoint
-    - [x] Create Models
-    - [ ] Create Controllers
-    - [ ] Set up Routes
-    - [ ] Test
+- [ ] Develop User Endpoint
+
+    Register, Login, Token Autorize
+
+    - [x] Create Model
+    - [x] Create Controller
+    - [x] Set up Routes
+    - [ ] Token check Middleware
+    - [ ] Tests
 
 
