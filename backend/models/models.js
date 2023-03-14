@@ -42,6 +42,5 @@ export async function models_init () {
         resolve ();
 
     })
-    
 
 }
