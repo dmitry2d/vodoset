@@ -26,8 +26,7 @@ Version 2.0.1
 - [x] Set up Sequelize Connection
 
 - [ ] Develop User and Role Endpoint
-    - [ ] Create DB Tables
-    - [ ] Create Models
+    - [x] Create Models
     - [ ] Create Controllers
     - [ ] Set up Routes
     - [ ] Test

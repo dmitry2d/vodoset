@@ -15,7 +15,6 @@ export function db_init (process) {
             }
         );
         await db.authenticate();
-        await db.sync();
         resolve();
     })
 }
