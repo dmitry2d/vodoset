@@ -25,16 +25,11 @@ Version 2.0.1
 
 - [x] Error Handling Middleware
 
-- [x] Set up Sequelize Connection
+- [x] Set up Sequelize
 
-- [ ] Develop User Endpoint
-
-    Register, Login, Token Autorize
-
-    - [x] Create Model
-    - [x] Create Controller
-    - [x] Set up Routes
-    - [ ] Token check Middleware
+- [ ] User Endpoint // *Register, Login, Authorize, List*
+    - [x] Model Controller Routes
+    - [ ] Auth Middleware
     - [ ] Tests
 
 

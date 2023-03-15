@@ -2,7 +2,7 @@
 import apiError from '../errors/apiError.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { models } from '../models/models.js';
+import { models } from '../database/models/index.js';
 
 function sign (payload) {
     return jwt.sign (
