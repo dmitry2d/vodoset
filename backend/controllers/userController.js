@@ -45,5 +45,7 @@ export async function login (req, res, next) {
 }
 
 export function check (req, res, next) {
-
+    const user = req.user;
+    const token = sign({id: user.id, username: user.username, role: user.role});
+    return res.json({token});
 }
