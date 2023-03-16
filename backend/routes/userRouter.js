@@ -1,12 +1,16 @@
 import { Router } from 'express';
-import * as userController from '../controllers/userController.js';
-import { authMW } from '../middleware/index.js';
+import { userController } from '../controllers/index.js';
+import { roleMiddleware } from '../middleware/index.js';
 
-const router = new Router ();
+const userRouter = new Router ();
 
-router.post ('/register', userController.register);
-router.post ('/login', userController.login);
-router.get ('/auth',  authMW, userController.check);
+userRouter.post ('/register', userController.register);
+userRouter.post ('/login', userController.login);
+userRouter.get ('/auth', userController.isAuthorized);
 
-export default router;
+userRouter.get ('/users',  roleMiddleware(['ADMIN']), userController.getUserList);
+
+export {
+    userRouter
+};
 

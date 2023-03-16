@@ -24,6 +24,10 @@ import { errorHandling } from './middleware/index.js';
             console.log (`Server started at ${process.env.PORT}`);
         });
 
+        function send(req, res) {
+            res.json({hello: true})
+        }
+
     } catch (error) {
         console.log (error);
     }

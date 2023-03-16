@@ -1,3 +1,9 @@
-import errorHandling from "./errorHandlingMW.js";
-import authMW from "./authMW.js";
-export { errorHandling, authMW }
+import errorHandling from "./errorHandlingMiddleware.js";
+import isAuthorizedMiddleware from "./isAuthorizedMiddleware.js";
+import roleMiddleware from "./roleMiddleware.js";
+
+export {
+    errorHandling,
+    isAuthorizedMiddleware,
+    roleMiddleware
+}

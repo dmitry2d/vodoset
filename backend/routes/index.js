@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import user from "./userRouter.js"
+import { userRouter } from "./userRouter.js"
 
 const router = new Router ();
 
-router.use ('/user', user);
+router.use ('/user', userRouter);
 
-export { router };
+export {
+    router
+ };
