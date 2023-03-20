@@ -1,19 +1,16 @@
 
-# Backend Development Roadmap
-
+# Backend Roadmap
 Vodoset 2.0 Application
 Version 2.0.1
 
-## [ ] User Authorization Stage
+## [x] Project Init
 
-- [ ] Draw Backend Scheme
-    - [x] Overall scheme
+- [x] Start Backend Scheme
 
 - [x] Set up PostgreSQL (Have 15.1)
 - [x] Set up NodeJS (Have 16.19)
-
 - [x] Init npm project
-- [x] Set up initial dependencies
+- [x] Set up dependencies
     - express
     - pg
     - nodemon
@@ -21,15 +18,15 @@ Version 2.0.1
     - sequelize
     - cors
 
-- [x] Set up "Express.js" Server
-
-- [x] Error Handling Middleware
-
 - [x] Set up Sequelize
+- [x] Set up Express Server
 
-- [ ] User Endpoint // *Register, Login, Authorize, List*
-    - [x] Model Controller Routes
-    - [ ] Auth Middleware
-    - [ ] Tests
+- [x] Start Error Handling Middleware
 
+## [x] User Authorization Stage
+- [x] User Endpoint - /register /login /auth /list
+    - [x] Models, Controller, Router
+    - [x] Auth Middleware
+
+- Switch to Frontend
 
