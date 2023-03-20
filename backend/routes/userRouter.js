@@ -8,7 +8,7 @@ userRouter.post ('/register', userController.register);
 userRouter.post ('/login', userController.login);
 userRouter.get ('/auth', userController.isAuthorized);
 
-userRouter.get ('/users',  roleMiddleware(['ADMIN']), userController.getUserList);
+userRouter.get ('/list',  roleMiddleware(['ADMIN']), userController.getUserList);
 
 export {
     userRouter

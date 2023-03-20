@@ -65,7 +65,7 @@ async function isAuthorized (req, res, next) {
 async function getUserList (req, res, next) {
 
     const userList = await models.User.findAll();
-    return json({userList});
+    return res.json({userList});
 
 }
 
