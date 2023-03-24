@@ -3,14 +3,11 @@
 
 Frontend part is a Vue 3 / Vite roject
 
-## Documentation
-
 ## Technologies
 
 * NodeJS 16.19
-* Vite
-* Vue 3 (Composition API)
-* less
+* Vite / Vue 3
+* HTML / Less
 
 ## Helping information
 

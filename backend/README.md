@@ -3,7 +3,10 @@
 
 Backend part is a REST API Web Server
 
-## API Documentation
+## Running
+
+- npm install
+- npm run dev
 
 ## Technologies
 
