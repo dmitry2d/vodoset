@@ -1,15 +1,8 @@
 
-# Vodoset 2.0 Frontend
+# Vodoset Frontend
+Vite / Vue 3 Application
 
-Frontend part is a Vue 3 / Vite roject
-
-## Technologies
-
-* NodeJS 16.19
-* Vite / Vue 3
-* HTML / Less
-
-## Helping information
+## Help information
 
 UI Design video guide (Vue3 Comp + VIte + Vuelidate)
 https://www.youtube.com/watch?v=zry-IbgQOaQ&list=PL2hgv2vHkQ7Be1lSDvvlhsxoTHddbgWw9&index=1
