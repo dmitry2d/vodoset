@@ -1,11 +1,39 @@
+
+// Fonts
+
+@FontText: "Inter, Helvetica, Arial, sans-serif";
+@FontCode: 'Source Code Pro', Courier, sans-serif;
+
+//  Colors
+
+@c-ice: 249,250,254;
+@c-light: 220,225,240;
+@c-grey: 175,182,203;
+@c-dark: 52,60,84;
+@c-link: 51,135,206;
+@c-blue: 30,57,143;
+
+
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-  }
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  position: relative;  
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1px;
+}
+
+body {
+  font-size: 14rem;
+  font-family: @FontCode;
+  background: rgb(@c-ice);
+  color: rgb(@c-blue);
+}

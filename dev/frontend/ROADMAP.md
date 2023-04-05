@@ -5,17 +5,21 @@
 
 ## Store
 
-- [ ] State
+- [ ] Session
+    - [ ] Auth, Login
 
-- [ ] Auth, Login, Local Token
-
-    User: role?
-
+    
 ## Vews
 
 ## Components
 
-- [ ] Menu
-    - Different menu for roles?
-    - Common menu, and role for each menu item [x]
+- Menu
+    - Menu roles
 
+
+## UI
+
+    - box
+    - form
+    - field
+    - logo

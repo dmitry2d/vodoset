@@ -1,13 +1,16 @@
 
 // App Store
 
-import { reactive, readonly } from 'vue';
+import { readonly } from 'vue';
 import useSession from './session';
 
-const store = {
-    state: readonly ({})
+const session = useSession ();
+
+const state = {
+    auth: session.auth.state    
 };
 
-const session = useSession (store);
-
-export default store;
+export default {
+    state: readonly(state),
+    session
+}

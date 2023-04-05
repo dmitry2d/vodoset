@@ -1,38 +1,53 @@
-import { reactive } from 'vue';
+import { reactive, readonly } from 'vue';
 
-export default function (store) {
+export default function () {
 
-    const state = reactive({
+    const state = readonly(reactive({
         token: null,
         username: null,
         role: null
-    });
+    }));
 
     
     const check = function () {
-        /*
-  
-        get local token
-        if not return
-        if yes call api auth
-        if return token - set new token and user
-        if not clear state
+       
+        return new Promise(async resolve => {
 
-*/
-        const token = localStorage.getItem ('authorization-token');
-        
-        
+            const localToken = localStorage.getItem ('authorization-token');
+            if (!token) return resolve({
+                success: false,
+                message:'no local token'
+            });
+
+            resolve ({
+                success: false,
+                message: 'auth not ready yet'
+            });
+
+        });
+    }
+
+    const login = function (username, password) {
+        return new Promise(async resolve => {
+
+            const localToken = localStorage.getItem ('authorization-token');
+            if (!token) return resolve({
+                success: false,
+                message:'no local token'
+            });
+
+            resolve ({
+                success: false,
+                message: 'login not ready yet'
+            });
+
+        });
         
     }
-    
-    const getLocalToken = function () {
-        
-    }
-    
-    store.state.auth = state;
 
     return {
-        check
+        check,
+        state
     };
 
 }

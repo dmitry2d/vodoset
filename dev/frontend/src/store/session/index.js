@@ -1,9 +1,8 @@
 import useAuth from './auth';
-import useSettings from './settings';
 
-export default function (store) {
+export default function () {
 
-    const auth = useAuth (store);
+    const auth = useAuth ();
 
     return {
         auth
