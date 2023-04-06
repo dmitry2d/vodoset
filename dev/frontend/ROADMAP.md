@@ -6,7 +6,8 @@
 ## Store
 
 - [ ] Session
-    - [ ] Auth, Login
+    - [ ] Auth
+    - [ ] Login
 
     
 ## Vews
