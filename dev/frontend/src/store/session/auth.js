@@ -14,7 +14,8 @@ export default function () {
         return new Promise(async resolve => {
 
             const localToken = localStorage.getItem ('authorization-token');
-            if (!token) return resolve({
+
+            if (!localToken) return resolve({
                 success: false,
                 message:'no local token'
             });

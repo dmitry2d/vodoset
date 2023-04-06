@@ -22,7 +22,7 @@
     .box {
         border-radius: 20rem;
         box-shadow: 0 22rem 32rem rgba(@c-blue,0.07);
-        padding: 30rem 30rem;
+        padding: 40rem 30rem;
         width: fit-content;
         transition: box-shadow 0.3s ease-in-out;
         &:hover,
