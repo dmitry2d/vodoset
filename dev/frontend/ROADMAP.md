@@ -1,7 +1,9 @@
 
 # Vodoset App Frontend Roadmap
 
+## Vite
 
+- [ ] Add css autprefixer
 
 ## Store
 
@@ -21,6 +23,10 @@
 ## UI
 
     - box
+        - [x] simple white box
     - form
     - field
+        - [x] simple field
+        - [x] focus()
+
     - logo

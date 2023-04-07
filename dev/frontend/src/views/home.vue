@@ -7,7 +7,7 @@ import { ref } from 'vue';
     (async ()=> {
         await store.session.auth.check();
         if (!store.state.auth.token) {
-            // router.replace('/login');
+            router.replace('/login');
         }
     })();
 
