@@ -10,6 +10,7 @@
 </script>
 
 <template>
+
     <div class="login flex column center fullscreen">
         <div class="wrapper">
             <ui-logo><h1>Vodoset<br>2.0</h1></ui-logo>
