@@ -14,6 +14,10 @@
     
 ## Vews
 
+- [ ] Login
+    - Send Auth of Foirm confirm
+    - Display Errors
+
 ## Components
 
 - Menu
@@ -22,8 +26,7 @@
 
 ## UI
 
-    - box
-        - [x] simple white box
+    - [x] box
     - form
     - field
         - [x] simple field

@@ -87,10 +87,10 @@
         
         .content {
             top: 0;
-            transition: top 0.3s ease-in-out;
+            transition: top 0.2s;
         }
         &:hover .content {
-            top: 2rem;
+            top: -1rem;
         }
 
     }

@@ -1,6 +1,6 @@
 
 <script setup>
-    import { ref, onMounted } from 'vue';
+    import { ref, } from 'vue';
 
     const props = defineProps({
         name: {
@@ -8,7 +8,7 @@
             required: true
         },
         value: {
-            type: String,
+            String,
             default: ''
         },
         placeholder: {
@@ -38,7 +38,17 @@
         field.value.focus();
     }
 
-    defineExpose({focus})
+    const emits = defineEmits (
+        ['update:value']
+    )
+    const updateValue = event => {
+        emits('update:value', event.target.value)
+    }
+
+    defineExpose({
+        focus
+    })
+
 
 </script>
 
@@ -53,7 +63,11 @@
             :id="name"
             :value="value"
             :placeholder="placeholder"
+            @input="updateValue"
         >
+    </div>
+    <div class="error">
+        {{ error }}
     </div>
 </template>
 

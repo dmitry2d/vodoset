@@ -1,4 +1,5 @@
 import { reactive, readonly } from 'vue';
+import api from '@/api/'
 
 export default function () {
 
@@ -29,25 +30,17 @@ export default function () {
     }
 
     const login = function (username, password) {
+
         return new Promise(async resolve => {
-
-            const localToken = localStorage.getItem ('authorization-token');
-            if (!token) return resolve({
-                success: false,
-                message:'no local token'
-            });
-
-            resolve ({
-                success: false,
-                message: 'login not ready yet'
-            });
-
+            const result = await (api.login (null, {username, password}))
+            resolve (result);
         });
         
     }
 
     return {
         check,
+        login,
         state
     };
 

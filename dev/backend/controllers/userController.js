@@ -34,7 +34,6 @@ async function register (req, res, next) {
 }
 
 async function login (req, res, next) {
-
     const {username, password} = req.query;
     if (!username || !password) {
         return next(apiError.badRequest('Missing Username or Password'));

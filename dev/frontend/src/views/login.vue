@@ -1,36 +1,66 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
+    import { ref, reactive, onMounted } from 'vue';
     import  { uiLogo, uiBox, uiField, uiButton } from '@/components/ui/';
+    import store from '@/store/';
 
-    const username = ref();
+
+    const usernameField = ref();
     onMounted (() => {
-        username.value.focus();
+        usernameField.value.focus();
+    });
+    
+    const form = reactive({
+        username: {
+            value: '',
+            error: ''
+        },
+        password:  {
+            value: '',
+            error: ''
+        },
+        error: ''
     })
+    const onLoginFormSubmit = async e => {
+        const result = await store.session.auth.login(form.username.value, form.password.value);
+        if (result.message) {
+            form.error = result.message || 'Какая-то';
+        }
+    };
    
 </script>
 
 <template>
-
+{{ form.username.value }}
     <div class="login flex column center fullscreen">
         <div class="wrapper">
             <ui-logo><h1>Vodoset<br>2.0</h1></ui-logo>
             <ui-box class="flex column center">
                 <h1>Login</h1>
                 <ui-field
-                    ref="username"
+                    ref="usernameField"
                     name="username"
                     label="Имя пользователя"
                     placeholder="Введите Ваш логин"
                     required="true"
-                ></ui-field>
-                <ui-field
+                    :error="form.username.error"
+                    v-model:value="form.username.value"
+                    />
+                    <ui-field
                     name="password"
                     label="Пароль"
                     placeholder="Введите пароль"
                     required="true"
                     password="true"
-                ></ui-field>
-                <ui-button icon="add">Войти</ui-button>
+                    :error="form.password.error"
+                    v-model:value="form.password.value"
+                    />
+                    <ui-button
+                    icon="add"
+                    @click="onLoginFormSubmit"
+                >Войти</ui-button>
+                <div class="error">
+                    {{ form.error }}
+                </div>
             </ui-box>
         </div>
     </div>
