@@ -1,6 +1,6 @@
 
 <script setup>
-    import { ref, } from 'vue';
+    import { ref, toRef, computed } from 'vue';
 
     const props = defineProps({
         name: {
@@ -39,9 +39,10 @@
     }
 
     const emits = defineEmits (
-        ['update:value']
+        ['update:error', 'update:value']
     )
     const updateValue = event => {
+        emits('update:error', '')
         emits('update:value', event.target.value)
     }
 
@@ -64,10 +65,13 @@
             :value="value"
             :placeholder="placeholder"
             @input="updateValue"
+            :class="{
+                'error': !!error
+            }"
         >
-    </div>
-    <div class="error">
-        {{ error }}
+        <div class="error">
+            {{ error }}
+        </div>
     </div>
 </template>
 
@@ -94,7 +98,11 @@
             border: 2rem solid rgb(@c-light);
             border-radius: 13rem;
 
-            transition: border-color 0.3s ease-in-out;
+            &.error {
+                border-color: rgb(@c-red);
+            }
+
+            transition: border-color 0.2s ease-in-out;
             
             &::placeholder {
                 color: rgb(@c-grey);
@@ -128,6 +136,12 @@
             font-size: @fontsize;
             font-weight: 400;
             color: rgb(@c-grey);
+        }
+
+        div.error {
+            align-self: flex-start;
+            padding: 2rem 18rem;
+            color: rgb(@c-red);
         }
 
     }

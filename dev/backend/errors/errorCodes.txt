@@ -1,0 +1,11 @@
+
+
+Authorization
+
+101 - No User Name / Password specified
+102 - User is Not Registered
+103 - Wrong Password
+
+Registration
+
+201 - Username Already Registered

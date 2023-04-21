@@ -17,12 +17,12 @@ async function register (req, res, next) {
 
     const {username, password, role} = req.query;
     if (!username || !password) {
-        return next(apiError.badRequest('Missing Username or Password'));
+        return next(apiError.badRequest('Missing Username or Password', 101));
     }
 
     const existingUser = await models.User.findOne ({where:{username}});
     if (existingUser) {
-        return next(apiError.badRequest('Username Already Registered'));
+        return next(apiError.badRequest('Username Already Registered', 201));
     }
 
     const encryptedPassword = await bcrypt.hash(password, 5);
@@ -36,17 +36,17 @@ async function register (req, res, next) {
 async function login (req, res, next) {
     const {username, password} = req.query;
     if (!username || !password) {
-        return next(apiError.badRequest('Missing Username or Password'));
+        return next(apiError.badRequest('Missing Username or Password', 101));
     }
 
     const user = await models.User.findOne ({where:{username}});
     if (!user) {
-        return next(apiError.badRequest('User is Not Registered'));
+        return next(apiError.badRequest('User is Not Registered', 102));
     }
 
     const comparePassword = bcrypt.compareSync (password, user.password);
     if (!comparePassword) {
-        return next(apiError.badRequest('Wrong Password'));
+        return next(apiError.badRequest('Wrong Password', 103));
     }
     const token = createJWTToken ({id: user.id, username: user.username, role: user.role});
     return res.json({token});

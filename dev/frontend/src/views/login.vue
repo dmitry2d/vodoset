@@ -1,8 +1,12 @@
 <script setup>
-    import { ref, reactive, onMounted } from 'vue';
+
+    import { ref, reactive, onMounted, computed } from 'vue';
     import  { uiLogo, uiBox, uiField, uiButton } from '@/components/ui/';
     import store from '@/store/';
+    import router from '@/router/';
+    import lang from '@/lang';
 
+    const userLanguage = ref('ru');
 
     const usernameField = ref();
     onMounted (() => {
@@ -21,45 +25,74 @@
         error: ''
     })
     const onLoginFormSubmit = async e => {
-        const result = await store.session.auth.login(form.username.value, form.password.value);
-        if (result.message) {
-            form.error = result.message || 'Какая-то';
+        form.error = '';
+        form.username.error = '';
+        form.password.error = '';
+        if (!form.username.value) {
+            form.username.error = 'Enter User Name';
+            return;
         }
+        if (!form.password.value) {
+            form.password.error = 'Enter Password';
+            return;
+        }
+        const result = await store.session.auth.login(form.username.value, form.password.value);
+        if (!result.success) {
+            switch (result.code) {
+                case 102: 
+                    form.error = 'User Not Registered';
+                break;
+                case 103: 
+                    form.error = 'Wrong Password';
+            }
+            return;
+        }
+        router.replace('/');
     };
+
+    const usernameError = computed (() => {
+        return lang(form.username.error, userLanguage.value, 'errors')
+    })
+    const passwordError = computed (() => {
+        return lang(form.password.error, userLanguage.value, 'errors')
+    })
+    const formError = computed (() => {
+        return lang (form.error, userLanguage.value, 'errors')
+    })
    
 </script>
 
 <template>
-{{ form.username.value }}
     <div class="login flex column center fullscreen">
         <div class="wrapper">
             <ui-logo><h1>Vodoset<br>2.0</h1></ui-logo>
             <ui-box class="flex column center">
-                <h1>Login</h1>
+                <h1>{{ lang('Authorization', userLanguage) }}</h1>
                 <ui-field
                     ref="usernameField"
                     name="username"
-                    label="Имя пользователя"
-                    placeholder="Введите Ваш логин"
+                    :label="lang('User Name', userLanguage)"
+                    :placeholder="lang('Enter User Name', userLanguage)"
                     required="true"
-                    :error="form.username.error"
+                    v-model:error="usernameError"
                     v-model:value="form.username.value"
-                    />
-                    <ui-field
+                />
+                <ui-field
                     name="password"
-                    label="Пароль"
-                    placeholder="Введите пароль"
+                    :label="lang('Password', userLanguage)"
+                    :placeholder="lang('Enter Password', userLanguage)"
                     required="true"
                     password="true"
-                    :error="form.password.error"
+                    v-model:error="passwordError"
                     v-model:value="form.password.value"
-                    />
-                    <ui-button
+                />
+                <ui-button
                     icon="add"
                     @click="onLoginFormSubmit"
-                >Войти</ui-button>
+                    >{{ lang('Log In', userLanguage) }}
+                </ui-button>
                 <div class="error">
-                    {{ form.error }}
+                    {{ formError }}
                 </div>
             </ui-box>
         </div>
@@ -80,6 +113,9 @@
         }
         .wrapper {
             margin-top: -220rem;
+        }
+        .error {
+            color: rgb(@c-red);
         }
     }
 </style>

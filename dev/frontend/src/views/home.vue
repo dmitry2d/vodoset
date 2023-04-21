@@ -1,15 +1,20 @@
 
 <script setup>
-import { ref } from 'vue';
     import store from '@/store';
     import router from '@/router';
     
     (async ()=> {
-        await store.session.auth.check();
-        if (!store.state.auth.token) {
+
+        if (!await store.session.auth.check ()) {
             router.replace('/login');
-        }
+        };
+
     })();
+
+    const logout = function () {
+        store.session.auth.logout();
+        router.go();
+    }
 
 </script>
 
@@ -18,7 +23,8 @@ import { ref } from 'vue';
         Authorizing...
     </div>
     <div class="home" v-if="store.state.auth.token">
-        Welcome home, {{ store.state.auth.username }}!
+        Welcome home, {{store.state.auth.token?.username}}!
+        <div @click="logout">Logout</div>
     </div>
 </template>
 
