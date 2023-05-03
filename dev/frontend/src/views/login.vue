@@ -36,7 +36,7 @@
             form.password.error = 'Enter Password';
             return;
         }
-        const result = await store.session.auth.login(form.username.value, form.password.value);
+        const result = await store.session.login(form.username.value, form.password.value);
         if (!result.success) {
             switch (result.code) {
                 case 102: 
@@ -47,7 +47,7 @@
             }
             return;
         }
-        router.replace('/');
+        router.push ('/');
     };
 
     const usernameError = computed (() => {

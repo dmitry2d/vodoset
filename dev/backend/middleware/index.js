@@ -1,9 +1,9 @@
 import errorHandling from "./errorHandlingMiddleware.js";
-import isAuthorizedMiddleware from "./isAuthorizedMiddleware.js";
+import authMiddleware from "./authMiddleware.js";
 import roleMiddleware from "./roleMiddleware.js";
 
 export {
     errorHandling,
-    isAuthorizedMiddleware,
+    authMiddleware,
     roleMiddleware
 }

@@ -15,6 +15,11 @@ export default {
         'Enter Password': 'Введите пароль',
         'User Not Registered': 'Пользователь не найден',
         'Wrong Password': 'Неправильный пароль',
+    },
+    menu: {
+        'Home': 'Главная',
+        'Settings': 'Настройки',
+        'Users': 'Пользователи'
     }
 
 }

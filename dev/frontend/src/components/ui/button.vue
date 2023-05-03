@@ -1,5 +1,7 @@
+
 <script setup>
-    import { computed, setBlockTracking } from 'vue';
+
+    import { computed } from 'vue';
     import uiIcon from './icon.vue';
 
 
@@ -55,7 +57,7 @@
         <ui-icon
             v-if="props.icon"
             :name="props.icon"
-            :color="style_.color"
+            :color="styles[props.style].color"
         ></ui-icon>
         <div
             class="content"

@@ -1,11 +1,19 @@
-import useAuth from './auth';
+import { readonly, reactive, watch } from 'vue';
+import Auth from './auth';
+import Login from './login';
+import Logout from './logout';
 
-export default function () {
+const state = reactive({
+    token: null
+});
 
-    const auth = useAuth ();
+const auth = Auth (state);
+const login = Login (state);
+const logout = Logout (state);
 
-    return {
-        auth
-    }
-
+export default {
+    auth,
+    login,
+    logout,
+    state: readonly(state)
 }

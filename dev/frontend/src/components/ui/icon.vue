@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+    import { computed } from 'vue';
     import iconData from './icons/index.js';
 
     const props = defineProps({
@@ -20,14 +20,18 @@ import { computed } from 'vue';
             default: 'white'
         }
     });
-
+    const color_ =  computed (() => {
+        return ('rgb(var(--c-' + props.color + '))')
+    });
     const html = computed(()=> {
-        return iconData[props.name].replace(/(.*)(stroke=")(.*?[^"])(")(.*)/gm, `$1$2${props.color}$4$5`);
+        return iconData[props.name]
+            .replace(/(.*)(stroke=")(.*?[^"])(")(.*)/gm, `$1$2${color_.value}$4$5`)
+            .replace(/(.*)(fill=")(.*?[^"])(")(.*)/gm, `$1$2${color_.value}$4$5`);
     });
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .icon {
         width: 28rem;
         height: 28rem;
