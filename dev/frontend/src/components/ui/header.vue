@@ -26,7 +26,7 @@
 
 
 <template>
-    <div class="header">
+    <div class="header container">
         <ui-logo type="horizontal" :notext="true">
             Vodoset<br>2.0
         </ui-logo>
@@ -48,8 +48,8 @@
         display: flex;
         align-items: center;
         background: white;
-        padding: 15rem 50rem;
         box-shadow: 0 0 44rem rgba(@c-blue,0.07);
+        z-index: 1;
     }
     :deep(.logo) {
         align-items: center;
@@ -68,6 +68,7 @@
     }
     .menu {
         margin: 0 30rem;
+        z-index: 1;
     }
     .divider {
         flex-grow: 1;
