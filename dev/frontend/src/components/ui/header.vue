@@ -4,15 +4,22 @@
     import uiLogo from './logo.vue'
     import store from '@/store'
     import uiSelect from './select.vue'
+    import router from '@/router'
 
     const menuItems = computed(() => {
         return store.user.state.menu.names || [];
     })
 
-    const selectedItem = ref(0);
+    const menuSelectedIndex = computed (() => {
+       return store.user.menu.getIndexFromViewName(router.currentRoute?.value?.name); 
+    }) 
 
     const onMenuChange = (menuIndex) => {
-        console.log (store.user.state.menu.flat?.[menuIndex]?.view)
+        const nextView = store.user.state.menu.flat?.[menuIndex]?.view;
+        const view = router.currentRoute?.value?.path;
+        if (nextView != view) {
+            router.push (nextView)
+        }
     }
 
 </script>
@@ -26,13 +33,13 @@
         <div class="menu">
             <ui-select
                 :items="menuItems"
-                v-model:selected="selectedItem"
+                :selected="menuSelectedIndex"
                 @update:selected="onMenuChange"
             >
             </ui-select>
         </div>
         <div class="divider"></div>
-        <div class="name">Admin</div>
+        <div class="name" @click="store.session.logout()">Admin</div>
     </div>
 </template>
 

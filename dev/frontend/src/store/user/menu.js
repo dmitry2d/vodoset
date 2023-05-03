@@ -3,26 +3,25 @@ import api from '@/api';
 import lang from '@/lang'
 import session from '../session';
 import { watch, reactive, readonly } from 'vue';
+
 // User menu
 // Watches for token change and loads menu
 
 export default function () {
 
     const state = reactive ({
-        // raw: {}
+        raw: {},
+        flat: [],
+        names: []
     })
 
     watch (() => session.state.token, async value => {
-
-        return new Promise(async resolve => {
-
+        if (session.state.token) {
             const result = await (api.uiMenu (session.state.token.JWTString));
             state.raw = result;
             state.flat = getFlat();
             state.names = getMenuNames();
-            resolve (result);
-        });
-
+        };
     });
     const getFlat = function () {
         return [
@@ -30,7 +29,7 @@ export default function () {
             ...(state.raw?.role_menu || [])
         ]
     }
-    const getMenuNames = function (raw) {
+    const getMenuNames = function () {
         return [
             ...(state.raw?.default_menu || []),
             ...(state.raw?.role_menu || [])
@@ -38,9 +37,16 @@ export default function () {
             return lang (item.name, 'ru', 'menu');
         })
     };
+    const getIndexFromViewName = viewName => {
+        const found = (state.flat || []).findIndex (menuItem => {
+            return menuItem.name == viewName
+        })
+        return found || 0;
+    }
 
     return {
-        state: readonly(state)
+        state: readonly(state),
+        getIndexFromViewName
     }
 
 }

@@ -1,21 +1,9 @@
 
 <script setup>
     import store from '@/store';
-    import router from '@/router';
     import { uiHeader } from '@/components/ui/'; 
     
-    (async ()=> {
 
-        if (!await store.session.auth ()) {
-            router.replace('/login');
-        };
-
-    })();
-
-    const logout = function () {
-        store.session.logout();
-        router.go();
-    }
 
 </script>
 
@@ -25,8 +13,8 @@
     </div>
     <div class="home" v-if="store.state.auth.token">
         <ui-header></ui-header>
+        <h1>Home View</h1>
     </div>
-    <!-- <div @click="logout">Logout</div> -->
 </template>
 
 <style lang="less">

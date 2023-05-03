@@ -6,8 +6,6 @@ export default function (state) {
 
     return function () {
 
-        return new Promise(async resolve => {
-
             if (!state.token) {
             
                 const localStorageToken = localStorage.getItem ('authorization-token');
@@ -23,9 +21,7 @@ export default function (state) {
                 state.token = null;
             }
     
-            resolve (!!state.token);
-    
-        });
+            return (!!state.token);
 
     }
     
