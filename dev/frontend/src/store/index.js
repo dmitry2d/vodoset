@@ -1,16 +1,19 @@
 
 // App Store
+// It works close to Vuex store
 
 import { readonly } from 'vue';
-import useSession from './session';
+import session from './session';
+import user from './user';
 
-const session = useSession ();
 
 const state = {
-    auth: session.auth.state   
+    auth: session.state,
+    user: user.state 
 };
 
 export default {
     state: readonly(state),
-    session: readonly(session)
+    session: readonly(session),
+    user: readonly(user),
 }
