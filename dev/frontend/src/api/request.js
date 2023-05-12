@@ -3,7 +3,6 @@ export default function (address, method = 'GET') {
 
     return async function (token, params = {}) {
 
-        
         return new  Promise (async resolve => {
             const options = {
                 method: method,

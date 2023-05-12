@@ -1,10 +1,10 @@
 
 import {createRouter, createWebHistory} from 'vue-router'
-import store from '@/store'
 import homeView from '@/views/home.vue'
 import loginView from '@/views/login.vue'
 import usersView from '@/views/users.vue'
 import settingsView from '@/views/settings.vue'
+import beforeEach from './beforeEach'
 
 const router = createRouter ({
     history: createWebHistory(),
@@ -17,7 +17,10 @@ const router = createRouter ({
         {
             path: '/login',
             name: 'Login',
-            component: loginView
+            component: loginView,
+            meta: {
+                noHeader: true
+            }
         },
         {
             path: '/users',
@@ -32,21 +35,6 @@ const router = createRouter ({
     ]
 })
 
-router.beforeEach ((to, from, next) => {
-    const auth = store.session.auth ();
-    if (!auth) {
-        if (to.name != 'Login') {
-            next({name: 'Login'})
-        } else {
-            next()
-        }
-    } else {
-        if (to.name == 'Login') {
-            next({name: 'Home'})
-        } else {
-            next()
-        }
-    }
-})
+router.beforeEach (beforeEach);
 
 export default router;

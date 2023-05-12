@@ -26,6 +26,34 @@ async function menu (req, res, next) {
     
 }
 
+async function saveSettings (req, res, next) {
+    
+    const matrix = req.query.matrix || '[]';
+
+    const existingSettings = await models.uiSettings.findOne ({where: {userId: req.user.id}})
+    
+    if (!existingSettings) {
+        const result = await models.uiSettings.create ({userId: req.user.id, matrix})
+        return res.json({success: !!result || [] [0]})    
+    } else {
+        const result = await models.uiSettings.update ({matrix},{where: {userId: req.user.id}})
+        return res.json({success: !!result || [] [0]})
+    }
+
+}
+
+async function loadSettings (req, res, next) {
+    const result = await models.uiSettings.findOne ({where: {userId: req.user.id}})
+    if (result) {
+        return res.json({
+            data: result.matrix
+        })
+    }
+    return res.json ({})
+}
+
 export default {
-    menu
+    menu,
+    saveSettings,
+    loadSettings
 }

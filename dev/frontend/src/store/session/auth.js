@@ -1,7 +1,9 @@
 
 import VueJwtDecode from 'vue-jwt-decode';
 
-// Check if authorization token exists and not expired
+// Check if authorization token exists
+// Delete token if it is expired
+
 export default function (state) {
 
     return function () {

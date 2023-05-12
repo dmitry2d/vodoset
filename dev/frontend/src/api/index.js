@@ -1,21 +1,22 @@
 import useRequest from './request.js';
 
 const env = import.meta.env;
-const prefix = 'VITE_API';
-const endpoint = env[prefix + '_ENDPOINT'];
-const address = {
-    auth: endpoint + env[prefix + '_AUTH'],
-    login: endpoint + env[prefix + '_LOGIN'],
-    uiMenu: endpoint + env[prefix + '_UIMENU']
-}
 
-const auth = useRequest (address.auth, 'GET');
-const login = useRequest (address.login, 'POST');
+const envPrefix = 'VITE_API_';
 
-const uiMenu = useRequest (address.uiMenu, 'GET');
+const endpoint = env[envPrefix + 'ENDPOINT'];
+const address = envName => endpoint + env[envPrefix + envName];
+    
+const auth = useRequest (address('AUTH'), 'GET');
+const login = useRequest (address('LOGIN'), 'POST');
+const uiMenu = useRequest (address('UIMENU'), 'GET');
+const saveUserSettings = useRequest (address('USERSETTINGS'), 'POST');
+const loadUserSettings = useRequest (address('USERSETTINGS'), 'GET');
 
 export default {
     auth,
     login,
-    uiMenu
+    uiMenu,
+    saveUserSettings,
+    loadUserSettings
 }

@@ -1,6 +1,6 @@
 
 <script setup>
-    import { ref, computed, watch } from 'vue'
+    import { computed } from 'vue'
     import uiLogo from './logo.vue'
     import store from '@/store'
     import uiSelect from './select.vue'
