@@ -1,6 +1,4 @@
 
-
-
 <script setup>
     import store from '@/store'
     import router from '@/router'
@@ -16,6 +14,13 @@
         store.user.settings.toggleMenu();
         store.user.settings.save();
     }
+    const onItemClick = (menuIndex) => {
+        const nextView = store.user.state.menu.flat?.[menuIndex]?.view;
+        const view = router.currentRoute?.value?.path;
+        if (nextView != view) {
+            router.push (nextView)
+        }
+    }
 
 </script>
 
@@ -29,11 +34,13 @@
             <div
                 class="item"
                 v-for="(item, index) of store.user.menu.state.flat"
+                @click="onItemClick(index)"
             >
                 <div class="icon"><ui-icon :name="item.icon" :color="index == selectedMenuItem?'blue':'grey'"></ui-icon></div>
-                <div class="name"><div v-html="item.name"></div></div>
+                <div class="name"><div v-html="store.user.menu.state.names[index]"></div></div>
             </div>
-        </div>        <div class="opener" @click="toggle">
+        </div>
+        <div class="opener" @click="toggle">
             <svg width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 1L1 4L4 7" stroke="#F4F7FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

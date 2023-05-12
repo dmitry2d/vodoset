@@ -7,15 +7,18 @@ const settings = Settings ();
 
 const state = reactive({
     menu: menu.state,
-    settings: settings.state
+    settings: settings.state,
+    initiated: false
 });
 
 const init = function () {
     return new Promise (async resolve => {
-        await menu.init ();
-        await settings.init ();
-        console.log (state.menu)
-        console.log (state.settings)
+        if (!state.initiated) {
+            console.log ('Initiating User');
+            await menu.init ();
+            await settings.init ();
+            state.initiated = true;
+        }
         resolve ();
     })
 }

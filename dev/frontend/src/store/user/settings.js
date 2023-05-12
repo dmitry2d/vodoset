@@ -12,9 +12,6 @@ export default function () {
 
     const init = function () {
         return new Promise (async resolve => {
-            if (state.initiated) {
-                return resolve();
-            }
             await load ();
             resolve ();
         })
