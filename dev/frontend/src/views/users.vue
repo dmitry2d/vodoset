@@ -1,21 +1,14 @@
-
-
-<!-- 
-
-Add User Button
-
-User's Data Table
-
- -->
-
-
 <script setup>
+    import { uiMenu } from '@/components/ui/';
 
 </script>
 
 <template>
-    <div class="users container">
-        <h1>Users View</h1>
+    <div class="users flex">
+        <ui-menu></ui-menu>
+        <div class="container">
+            <h1>Пользователи</h1>
+        </div>
     </div>
 </template>
 
