@@ -38,7 +38,6 @@ async function saveSettings (req, res, next) {
     const existingSettings = await models.uiSettings.findOne ({where: {userId: req.user.id}})
     
     if (!existingSettings) {
-        console.log (req.user.id)
         const result = await models.uiSettings.create ({userId: req.user.id, matrix: matrix})
         return res.json({success: !!result || [] [0]})    
     } else {

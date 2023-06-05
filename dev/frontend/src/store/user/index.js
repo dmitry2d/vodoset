@@ -14,7 +14,6 @@ const state = reactive({
 const init = function () {
     return new Promise (async resolve => {
         if (!state.initiated) {
-            console.log ('Initiating User');
             await menu.init ();
             await settings.init ();
             state.initiated = true;

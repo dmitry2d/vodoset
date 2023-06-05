@@ -41,12 +41,9 @@ export default function () {
     }
 
     const getIndexFromViewName = viewName => {
-        console.log (state.flat, viewName)
         const found = (state.flat || []).findIndex (menuItem => {
-            console.log (menuItem)
             return menuItem.name == viewName
         })
-        console.log (found)
         return found || 0;
     }
 
