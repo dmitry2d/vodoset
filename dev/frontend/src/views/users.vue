@@ -1,5 +1,10 @@
 <script setup>
-    import { uiMenu } from '@/components/ui/';
+
+    import { uiMenu, uiTable } from '@/components/ui/';
+
+    const usersData = [];
+
+    
 
 </script>
 
@@ -8,6 +13,10 @@
         <ui-menu></ui-menu>
         <div class="container">
             <h1>Пользователи</h1>
+            <ui-table
+                :data="usersData"
+            ></ui-table>
+
         </div>
     </div>
 </template>
