@@ -3,7 +3,6 @@ import { models } from '../database/models/index.js';
 import apiError from '../errors/apiError.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { json } from 'sequelize';
 
 function createJWTToken (tokenContent) {
     return jwt.sign (

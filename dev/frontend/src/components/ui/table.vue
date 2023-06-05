@@ -28,3 +28,23 @@ Select All \ None \ Row
 Actions (Select box)
 
 -->
+
+<script setup>
+    defineProps ({
+        data: {
+            type: Array,
+            default: []
+        }
+    })
+</script>
+
+<template>
+    <div>
+        {{ data }}
+    </div>
+</template>
+
+
+<style lang="less" scoped>
+
+</style>

@@ -6,6 +6,7 @@ import uiButton from './button.vue';
 import uiHeader from './header.vue';
 import uiMenu from './menu.vue';
 import uiSelect from './select.vue';
+import uiTable from './table.vue';
 
 export {
     uiLogo,
@@ -15,5 +16,6 @@ export {
     uiButton,
     uiHeader,
     uiMenu,
-    uiSelect
+    uiSelect,
+    uiTable
 }

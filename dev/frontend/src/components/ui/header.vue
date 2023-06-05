@@ -7,10 +7,13 @@
     import router from '@/router'
 
     const menuItems = computed(() => {
+        // console.log ( store.user.state.menu.names)
         return store.user.state.menu.names || [];
     })
 
     const menuSelectedIndex = computed (() => {
+        console.log (router.currentRoute?.value?.name)
+        console.log (store.user.menu.getIndexFromViewName(router.currentRoute?.value?.name))
        return store.user.menu.getIndexFromViewName(router.currentRoute?.value?.name); 
     }) 
 
@@ -30,6 +33,7 @@
         <ui-logo type="horizontal" :notext="true">
             Vodoset<br>2.0
         </ui-logo>
+        {{ menuSelectedIndex }}
         <div class="menu">
             <ui-select
                 :items="menuItems"

@@ -21,7 +21,7 @@ export async function initModels () {
         models.User.hasMany(models.Role);
         models.Role.belongsTo(models.User);
     
-        await sequelize.sync ({ alter: true });
+        await sequelize.sync ({ alter: true});
         resolve ();
 
     })

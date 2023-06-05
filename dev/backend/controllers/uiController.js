@@ -5,6 +5,7 @@ import apiError from '../errors/apiError.js';
 const fieldsToGet = ['name', 'icon', 'view'];
 
 async function menu (req, res, next) {
+    
     const default_menu = await models.uiMenu.findAll ({
         where: {
             roles: {
@@ -13,14 +14,18 @@ async function menu (req, res, next) {
         },
         attributes: fieldsToGet
     })
-    const role_menu = await models.uiMenu.findAll ({
-        where: {
-            roles: {
-                [Op.contains] : [req.user?.role]
-            }
-        },
-        attributes: fieldsToGet
-    })
+
+    let role_menu = []
+    if (req.user.role != 'USER') {
+        role_menu = await models.uiMenu.findAll ({
+            where: {
+                roles: {
+                    [Op.contains] : [req.user?.role]
+                }
+            },
+            attributes: fieldsToGet
+        })
+    }
    
     return res.json({default_menu, role_menu});
     
@@ -33,7 +38,8 @@ async function saveSettings (req, res, next) {
     const existingSettings = await models.uiSettings.findOne ({where: {userId: req.user.id}})
     
     if (!existingSettings) {
-        const result = await models.uiSettings.create ({userId: req.user.id, matrix})
+        console.log (req.user.id)
+        const result = await models.uiSettings.create ({userId: req.user.id, matrix: matrix})
         return res.json({success: !!result || [] [0]})    
     } else {
         const result = await models.uiSettings.update ({matrix},{where: {userId: req.user.id}})

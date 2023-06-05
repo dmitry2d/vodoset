@@ -11,6 +11,6 @@ export default {
     },
     matrix: {
         type: DataTypes.STRING,
-        unique: true
+        default: '[]'
     }
 }
