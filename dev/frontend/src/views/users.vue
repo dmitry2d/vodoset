@@ -1,8 +1,52 @@
 <script setup>
 
-    import { uiMenu, uiTable } from '@/components/ui/';
+    import { ref, reactive, onMounted } from 'vue'
 
-    const usersData = [];
+    import { uiBox, uiMenu, uiTable } from '@/components/ui/';
+
+
+    const tableData = ref([
+        {
+            name: 'Дмитрий',
+            role: 'ADMIN',
+            pos: '',
+            dept: ''
+        }
+    ]);
+
+    const tableColumns = [
+        {
+            key: 'name',
+            title: 'Имя',
+            type: 'text'
+        },
+        {
+            key: 'role',
+            title: 'Роль',
+            type: 'text'
+        },
+        {
+            key: 'pos',
+            title: 'Должность',
+            type: 'text'
+        },
+        {
+            key: 'dept',
+            title: 'Отдел',
+            type: 'text'
+        },
+    ]
+
+    const tableSort = reactive({
+
+        key: 'name',
+        dir: -1
+    })
+
+    // const usersTable = ref(null);
+    // onMounted (() => {
+    //     console.log (usersTable.value.a)
+    // })
 
     
 
@@ -13,13 +57,22 @@
         <ui-menu></ui-menu>
         <div class="container">
             <h1>Пользователи</h1>
-            <ui-table
-                :data="usersData"
-            ></ui-table>
-
+            <ui-box class="tableBox">
+                <ui-table
+                    :rows="tableData"
+                    :columns="tableColumns"
+                    :pages="10"
+                    :page="0"
+                    :sort="tableSort"
+                    ref="usersTable"
+                ></ui-table>
+            </ui-box>
         </div>
     </div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
+    :deep(.box) {
+        width: 100%;
+    }
 </style>
