@@ -1,23 +1,29 @@
 <script setup>
 
-    import { ref, reactive, onMounted } from 'vue'
-
+    import { ref, reactive, onMounted, computed, watchEffect } from 'vue'
     import { uiBox, uiMenu, uiTable } from '@/components/ui/';
-
-
-    const tableData = ref([
-        {
-            name: 'Дмитрий',
-            role: 'ADMIN',
-            pos: '',
-            dept: ''
-        }
-    ]);
+    import store from '@/store';
+    import api from '@/api';
 
     const tableColumns = [
         {
             key: 'name',
             title: 'Имя',
+            type: 'text'
+        },
+        {
+            key: 'surname',
+            title: 'Отчество',
+            type: 'text'
+        },
+        {
+            key: 'lastname',
+            title: 'Фамилия',
+            type: 'text'
+        },
+        {
+            key: 'username',
+            title: 'Логин',
             type: 'text'
         },
         {
@@ -38,17 +44,28 @@
     ]
 
     const tableSort = reactive({
-
         key: 'name',
         dir: -1
-    })
+    });
 
-    // const usersTable = ref(null);
-    // onMounted (() => {
-    //     console.log (usersTable.value.a)
-    // })
+    const tableNav = reactive ({
+        page: 0,
+        limit: 2,
+        pages: 0
+    });
 
-    
+    const tableData = ref([]);
+
+    watchEffect (async () => {
+        const result = await (api.getUsers (store.session.state.token.JWTString, {
+            page: tableNav.page,
+            limit: tableNav.limit
+        }));
+        tableNav.pages = Math.ceil((result.count || 0) / tableNav.limit);
+        tableData.value = (result.rows || []).map(({id, username, role, details}) => {
+            return {id, username, role, ...details}
+        });
+    });
 
 </script>
 
@@ -61,10 +78,8 @@
                 <ui-table
                     :rows="tableData"
                     :columns="tableColumns"
-                    :pages="10"
-                    :page="0"
-                    :sort="tableSort"
-                    ref="usersTable"
+                    :pages="tableNav.pages"
+                    v-model:page="tableNav.page"
                 ></ui-table>
             </ui-box>
         </div>

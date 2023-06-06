@@ -30,7 +30,6 @@
         <ui-logo type="horizontal" :notext="true">
             Vodoset<br>2.0
         </ui-logo>
-        {{ menuSelectedIndex }}
         <div class="menu">
             <ui-select
                 :items="menuItems"

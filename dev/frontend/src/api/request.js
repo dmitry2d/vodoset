@@ -1,4 +1,8 @@
 
+
+// Make request to API server using token and parameters
+
+
 export default function (address, method = 'GET') {
 
     return async function (token, params = {}) {
@@ -13,8 +17,17 @@ export default function (address, method = 'GET') {
             }
             const urlAddress = address + '?' + new URLSearchParams(params);
             const response = await fetch (urlAddress, options);
-            const json = await response.json();
-            resolve(json);
+            
+            try {
+                const json = await response.json();
+                resolve (json);
+            } catch (fetchError) {
+                resolve ({
+                    message: 'Fetch Error',
+                    originalResponse: response
+                })
+            }
+
         });
 
     }

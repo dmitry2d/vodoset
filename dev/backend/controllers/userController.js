@@ -61,9 +61,27 @@ async function isAuthorized (req, res, next) {
 }
 
 async function getUserList (req, res, next) {
-
-    const userList = await models.User.findAll();
-    return res.json({userList});
+    
+    const
+    page = parseInt(req.query.page),
+    limit = parseInt(req.query.limit),
+    offset = (limit || 0) * (page || 0),
+    {count, rows} = await models.User.findAndCountAll({
+        attributes: ['id', 'username', 'role'],
+        include: {
+            association: 'details',
+            attributes: ['name', 'surname', 'lastname', 'pos', 'dept'],
+        },
+        offset,
+        limit,
+        order: [['id', 'ASC']]
+    });
+    return res.json({
+        rows,
+        count,
+        page,
+        limit
+    });
 
 }
 

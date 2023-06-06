@@ -13,10 +13,16 @@ const uiMenu = useRequest (address('UIMENU'), 'GET');
 const saveUserSettings = useRequest (address('USERSETTINGS'), 'POST');
 const loadUserSettings = useRequest (address('USERSETTINGS'), 'GET');
 
+const getUsers = useRequest (address('USERS'), 'GET');
+
 export default {
+    
     auth,
     login,
     uiMenu,
     saveUserSettings,
-    loadUserSettings
+    loadUserSettings,
+
+    getUsers
+    
 }

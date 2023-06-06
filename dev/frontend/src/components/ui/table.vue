@@ -32,6 +32,8 @@ Actions (Select box)
 
 <script setup>
 
+import { onMounted, watchEffect } from 'vue';
+
 
     /*
         columns: Array (column)
@@ -63,7 +65,7 @@ Actions (Select box)
         }
          
     */
-    defineProps ({
+    const props = defineProps ({
         columns: {
             type: Array,
             default: []
@@ -76,28 +78,47 @@ Actions (Select box)
             type: Array,
             default: []
         },
-        pages: 0,
-        page: 0
+        pages: Number,
+        page: Number
     })
 
-    const emits = defineEmits (['update:selected']);
+    const emits = defineEmits (['update:page']);
 
-    const a = 123;
+    // const a = 123;
 
-    defineExpose({a})
+    // defineExpose({a})
+
+    watchEffect (() => {
+        console.log (props.rows)
+    });
+
+    const back = () => {
+        if (props.page > 0) {
+            emits('update:page', props.page - 1)
+        }
+    }
+    const forward = () => {
+        if (props.page < props.pages - 1) {
+            emits('update:page', props.page + 1)
+        }
+    }
 
 </script>
 
 <template>
-    {{ rows }}
     <div class="table">
-        <!-- {{ columns }} -->
         <div class="header">
             <div class="td" v-for="(column, columnIndex) in columns">{{ column.title }}</div>
         </div>
         <div class="tr" v-for="(row, rowIndex) in rows">
             <div class="td" v-for="(column, columnIndex) in columns">{{ row[column.key] }}</div>
         </div>
+    </div>
+    <div class="navy">
+        <div class="back" @click.stop="back">BACK</div>
+        <div class="page">{{ page + 1 }}</div>
+        <div class="pages"> of {{ pages }}</div>
+        <div class="forward" @click.stop="forward">FORWARD</div>
     </div>
 </template>
 

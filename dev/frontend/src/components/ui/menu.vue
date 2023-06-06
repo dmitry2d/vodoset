@@ -56,6 +56,7 @@
         border-left: none;
         border-radius: 0 15rem 15rem 0;
         z-index: 1;
+        align-self: flex-start;
     }
 
     &.open .item .name {
