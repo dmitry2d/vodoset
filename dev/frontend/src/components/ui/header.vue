@@ -6,8 +6,20 @@
     import uiSelect from './select.vue'
     import router from '@/router'
 
+    const props = defineProps ({
+        menuNames: {
+            type: Array,
+            default: []
+        },
+        menuSelected: {
+            type: Number,
+            default: 0
+        }
+    });
+
     const menuItems = computed(() => {
-        return store.user.state.menu.names || [];
+        return props.menuNames
+        // return store.user.state.menu.names || [];
     })
 
     const menuSelectedIndex = computed (() => {

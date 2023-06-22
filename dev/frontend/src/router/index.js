@@ -1,10 +1,14 @@
 
 import {createRouter, createWebHistory} from 'vue-router'
+
 import homeView from '@/views/home.vue'
 import loginView from '@/views/login.vue'
-import usersView from '@/views/users.vue'
 import settingsView from '@/views/settings.vue'
+import usersView from '@/views/admin/users.vue'
+import indexView from '@/views/index.vue'
+
 import beforeEach from './beforeEach'
+
 
 const router = createRouter ({
     history: createWebHistory(),
@@ -23,7 +27,12 @@ const router = createRouter ({
             }
         },
         {
-            path: '/users',
+            path: '/index',
+            name: 'Index',
+            component: indexView
+        },
+        {
+            path: '/index/users',
             name: 'Users',
             component: usersView
         },

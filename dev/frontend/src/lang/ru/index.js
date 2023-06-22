@@ -18,6 +18,7 @@ export default {
     },
     menu: {
         'Home': 'Главная',
+        'Index': 'Справочники',
         'Settings': 'Настройки',
         'Users': 'Пользователи'
     }

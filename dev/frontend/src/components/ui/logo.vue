@@ -24,7 +24,7 @@
 <script setup>
     const props = defineProps({
         type: {
-            stype: String,
+            type: String,
             default: 'vertical'
         },
         notext: Boolean
